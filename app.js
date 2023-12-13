@@ -8,6 +8,7 @@ app.use(cors())
 app.use(express.static('public'))
 
 const port = 3000;
+
 //Post Method
 app.post('/addTodo',async(req,res)=>{
     try {
@@ -22,7 +23,7 @@ app.post('/addTodo',async(req,res)=>{
     }
 })
 
-// get method all
+// Get method all
 
 app.get('/getTodos',async(req,res)=>{
   try {
@@ -33,7 +34,7 @@ app.get('/getTodos',async(req,res)=>{
   }
 })
 
-// get method single
+// Get method single
 app.get('/getTodo/:id', async(req,res)=>{
   try {
     const {id} = req.params;
@@ -45,7 +46,7 @@ app.get('/getTodo/:id', async(req,res)=>{
 
 })
 
-//put method one
+//Put method one
 app.put('/updateTodo/:id', async(req,res)=>{
   try {
     const {id} = req.params;
@@ -57,7 +58,7 @@ app.put('/updateTodo/:id', async(req,res)=>{
   }
 })
 
-//put method one
+//Delete method one
 app.delete('/deleteTodo/:id', async(req,res)=>{
   try {
     const {id} = req.params;
