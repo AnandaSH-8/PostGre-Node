@@ -1,1 +1,1 @@
-<h1>Learning Postgres SQL and relearning React<h1>
+<h1>Learning Postgre SQL and relearning React<h1>
