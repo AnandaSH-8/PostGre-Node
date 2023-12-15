@@ -28,7 +28,7 @@ app.post('/addTodo',async(req,res)=>{
 app.get('/getTodos',async(req,res)=>{
   try {
       const result = await pool.query('SELECT * FROM todo');
-      res.json(result.rows)
+      res.send({data:result.rows})
   } catch (error) {
     console.log(error,'IS AT LINE NUMBER 31');
   }
