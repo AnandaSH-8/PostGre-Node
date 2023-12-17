@@ -1,0 +1,23 @@
+
+.formStyle{
+    display: block;
+    width:90%;
+    margin: 4vh auto;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+    border-radius: 2%;
+    background-color: antiquewhite;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;;
+}
+
+.formStyle > *{
+    width:80%;
+    margin: 5px auto;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.formStyle > input:first-child{
+    font-weight: bold;
+}

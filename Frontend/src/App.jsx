@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import CreateTodo from './Components/addTodo'
 import TodoList from "./Components/todoList"
 import './App.css'
@@ -6,10 +5,14 @@ import './App.css'
 function App() {
 
   return (
-    <>
-    <CreateTodo></CreateTodo>
-    <TodoList></TodoList>
-    </>
+    <div className='border border-warning border-2 d-flex'>
+    <div className='addTodoBox'>
+      <CreateTodo></CreateTodo>
+    </div>
+    <div>
+      <TodoList></TodoList>
+    </div>
+    </div>
   )
 }
 
