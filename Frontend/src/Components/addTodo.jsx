@@ -11,18 +11,17 @@ export default function CreateTodo(){
 
     const onSubmitForm = async(e) => {
         e.preventDefault();
-        console.log(formInfo,'IS AT LINE NUMBER 14');
-        // try {
-        //     const payload = formInfo;
-        //     await fetch('http://localhost:3000/addTodo',{
-        //         "method":"POST",
-        //         "headers":{"Content-Type":"application/json"},
-        //         "body":JSON.stringify(payload)
-        //     })
-        //     setFormInfo('');
-        // } catch (error) {
-        //     console.error(error)
-        // }
+        try {
+            const payload = formInfo;
+            await fetch('http://localhost:3000/addTodo',{
+                "method":"POST",
+                "headers":{"Content-Type":"application/json"},
+                "body":JSON.stringify(payload)
+            })
+            setFormInfo({title:'', description:'', status:''});
+        } catch (error) {
+            console.error(error)
+        }
 
     }
 
@@ -36,13 +35,13 @@ export default function CreateTodo(){
                     onChange={({target}) => setFormInfo({...formInfo,description:target.value})}/>
                 <select name="Status" value={formInfo.status}
                     onChange={ ({target}) => setFormInfo({...formInfo,status:target.value})}>
-                    <option value="-">-</option>
+                    <option value="">select todo status</option>
                     <option value="Todo">Todo</option>
                     <option value="Progress">Progress</option>
                     <option value="Done">Done</option>
                     <option value="Failed">Failed</option>
                 </select>
-                <input type="submit" className="btn btn-sm btn-success" 
+                <input type="submit" className="btn btn-sm btn-success mt-4" 
                 value="Submit" />
             </form>
         </>

@@ -8,3 +8,8 @@
 .addTodoBox{
   width:40%;
 }
+
+.addTodoBox + div{
+  width:55%;
+  box-shadow: rgba(248, 214, 23, 0.76) 0px 10px 60px 0px, rgb(255, 0, 0) 0px 0px 0px 1px;
+}

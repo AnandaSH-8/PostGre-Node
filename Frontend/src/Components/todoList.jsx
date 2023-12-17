@@ -17,6 +17,14 @@ const TodoList = () => {
        }
     }
 
+    function tableColor(value){
+
+        if(value == 'Todo') return 'table-primary';
+        else if(value == 'Done') return 'table-success';
+        else if(value == 'Progress') return 'table-warning';
+        else return 'table-danger'
+    }
+
 
     useEffect( () =>{
         getList()
@@ -24,17 +32,31 @@ const TodoList = () => {
 
     return (
         <>
-        <div className="container w-25 mt-3 text-start">
-         {
-            todoList?.map((elem,index) =>{
-                return (
-                    <div key={index}>
-                        <h6 >{elem.description}</h6>
-                    </div>
-                )
-            })
-         }
-        </div>
+            <h3>- Todo Lists -</h3>
+            <table className="table mt-4">
+                <thead className="table-info">
+                    <tr>
+                        <th scope="col"> Id </th>
+                        <th scope="col"> Title </th>
+                        <th scope="col"> Description </th>
+                        <th scope="col"> Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {
+                    todoList?.map((elem,index) =>{
+                        return (
+                            <tr className={tableColor(elem.status)} scope="row" key={index}>
+                                <td>{elem.todo_id}</td>
+                                <td>{elem.title}</td>
+                                <td>{elem.description}</td>
+                                <td>{elem.status}</td>
+                            </tr>
+                        )
+                    })
+                }
+                </tbody>
+            </table>
         </>
     )
 }

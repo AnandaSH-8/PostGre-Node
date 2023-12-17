@@ -5,7 +5,7 @@ import './App.css'
 function App() {
 
   return (
-    <div className='border border-warning border-2 d-flex'>
+    <div className='d-flex'>
     <div className='addTodoBox'>
       <CreateTodo></CreateTodo>
     </div>
