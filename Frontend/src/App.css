@@ -1,15 +1,25 @@
 #root {
-  max-width: 1280px;
   margin: auto;
   padding: 2rem;
+  width:100%;
+  border:1px solid red;
   text-align: center;
 }
 
 .addTodoBox{
   width:40%;
+  border-radius: 10px;;
+  margin-right: 5%;
+  background-color:rgb(147, 65, 172);
+  color:ghostwhite;
 }
 
 .addTodoBox + div{
+  background-color: rgb(131, 45, 30);
   width:55%;
-  box-shadow: rgba(248, 214, 23, 0.76) 0px 10px 60px 0px, rgb(255, 0, 0) 0px 0px 0px 1px;
+  color:wheat;
+  padding-left:1vw;
+  border-radius: 10px;;
+  text-decoration: underline;
+  box-shadow: rgba(252, 248, 226, 0.76) 0px 10px 60px 0px, rgba(255, 0, 0, 0.463) 0px 0px 0px 1px;
 }
