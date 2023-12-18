@@ -2,24 +2,26 @@
   margin: auto;
   padding: 2rem;
   width:100%;
-  border:1px solid red;
+  border:3px double rgb(174, 167, 167);
   text-align: center;
 }
 
 .addTodoBox{
-  width:40%;
+  width:30%;
   border-radius: 10px;;
-  margin-right: 5%;
+  margin-right: 3%;
   background-color:rgb(147, 65, 172);
   color:ghostwhite;
 }
 
 .addTodoBox + div{
   background-color: rgb(131, 45, 30);
-  width:55%;
+  width:67%;
   color:wheat;
   padding-left:1vw;
+  padding-right: 1vw;
+  height: 340px;
+  overflow-y: scroll;
   border-radius: 10px;;
-  text-decoration: underline;
   box-shadow: rgba(252, 248, 226, 0.76) 0px 10px 60px 0px, rgba(255, 0, 0, 0.463) 0px 0px 0px 1px;
 }

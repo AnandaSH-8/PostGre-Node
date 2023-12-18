@@ -5,14 +5,19 @@ import style from "../Styles/todoList.module.css"
 const TodoList = () => {
 
     const [todoList,setTodoList] = useState([]);
+    const [start,setStart] = useState(false);
 
     const getList = async () => {
 
        try {
-         const result = await fetch('http://localhost:3000/getTodos');
-         const {data} = await result.json()
-         
-         setTodoList(data);
+        setStart(true)
+        const time = setTimeout(async ()=>{
+            const result = await fetch('http://localhost:3000/getTodos');
+            const {data} = await result.json()
+            setTodoList(data);
+            clearTimeout(time)
+            setStart(false)
+        },500)
        } catch (error) {
         console.error(error);
        }
@@ -27,21 +32,24 @@ const TodoList = () => {
     }
 
 
-    useEffect( () =>{
-        getList()
-    },[])
+    // useEffect( () =>{
+    //     getList()
+    // },[])
 
     return (
         <>
-            <div className={style.refreshRound}></div>
-            <h3>- Todo Lists -</h3>
-            <table className="table mt-4">
+            <div onClick={getList} className={start ? style.spinRefresh : style.roundRefresh}>
+                <span>Refresh</span>
+            </div>
+            <h3>- Todo Lists - {start}</h3>
+            <table className="table mt-4 over">
                 <thead className="table-info">
                     <tr>
                         <th scope="col"> Id </th>
                         <th scope="col"> Title </th>
                         <th scope="col"> Description </th>
                         <th scope="col"> Status </th>
+                        <th scope='col'>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +60,10 @@ const TodoList = () => {
                                 <td>{elem.todo_id}</td>
                                 <td>{elem.title}</td>
                                 <td>{elem.description}</td>
-                                <td>{elem.status}</td>
+                                <td>
+                                    <div>{elem.status}</div>
+                                </td>
+                                <td>Edit</td>
                             </tr>
                         )
                     })
