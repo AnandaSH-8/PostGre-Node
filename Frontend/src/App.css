@@ -15,12 +15,11 @@
 }
 
 .addTodoBox + div{
-  background-color: rgb(131, 45, 30);
   width:67%;
   color:wheat;
   padding-left:1vw;
   padding-right: 1vw;
-  height: 340px;
+  height: 380px;
   overflow-y: scroll;
   border-radius: 10px;;
   box-shadow: rgba(252, 248, 226, 0.76) 0px 10px 60px 0px, rgba(255, 0, 0, 0.463) 0px 0px 0px 1px;

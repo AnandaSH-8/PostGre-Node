@@ -1,8 +1,10 @@
 
 import { useState,useEffect } from "react"
 import style from "../Styles/todoList.module.css"
-import { Table, Thead, Tbody, Tfoot, Tr,
-        Th, Td, TableCaption, TableContainer, } from '@chakra-ui/react'
+import { Table, Thead, Tbody, Tr, IconButton,
+        Th, Td, TableContainer, Box } from '@chakra-ui/react'
+import {DeleteIcon, EditIcon} from '@chakra-ui/icons'
+
 
 
 const TodoList = () => {
@@ -52,39 +54,63 @@ const TodoList = () => {
 
     return (
         <>
-            <div onClick={getList} className={start ? style.spinRefresh : style.roundRefresh}>
-                <span>Refresh</span>
-            </div>
-            <h3>- Todo Lists - {start}</h3>
-            <table className="table mt-4 over">
-                <thead className="table-info">
-                    <tr>
-                        <th scope="col"> Id </th>
-                        <th scope="col"> Title </th>
-                        <th scope="col"> Description </th>
-                        <th scope="col"> Status </th>
-                        <th scope='col'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                    todoList?.map((elem,index) =>{
-                        return (
-                            <tr className={tableColor(elem.status)} scope="row" key={index}>
-                                <td>{elem.todo_id}</td>
-                                <td>{elem.title}</td>
-                                <td>{elem.description}</td>
-                                <td className={style.statusColumn}>
-                                    <div className={style.statusBox} 
-                                    style={{backgroundColor:tableColor(elem.status,true)}}>{elem.status}</div>
-                                </td>
-                                <td>Edit</td>
-                            </tr>
-                        )
-                    })
-                }
-                </tbody>
-            </table>
+            <Box bg='tomato' color='white' display='flex' p='1'>
+                <Box w='20%' textAlign='left' p="1">
+                   <Box onClick={getList} className={start ? style.spinRefresh : style.roundRefresh}>
+                        <p>Refresh</p>
+                    </Box>
+                </Box>
+                <Box w="60%">
+                    <h3>- Todo Lists -</h3>
+                </Box>
+            </Box>
+        <TableContainer>
+            <Table variant='striped' colorScheme="orange">
+                <Thead>
+                    <Tr>
+                        <Th> Id </Th>
+                        <Th> Title </Th>
+                        <Th> Description </Th>
+                        <Th> Status </Th>
+                        <Th> Actions</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {  todoList?.map((elem,index) =>{
+                            return (
+                                <Tr className={tableColor(elem.status)} scope="row" key={index}>
+                                    <Td>{elem.todo_id}</Td>
+                                    <Td>{elem.title}</Td>
+                                    <Td>{elem.description}</Td>
+                                    <Td className={style.statusColumn}>
+                                        <Box className={style.statusBox} 
+                                        style={{backgroundColor:tableColor(elem.status,true)}}>{elem.status}</Box>
+                                    </Td>
+                                    <Td>
+                                    <IconButton
+                                        isRound={true}
+                                        variant='ghost'
+                                        colorScheme='orange'
+                                        fontSize='20px'
+                                        aria-label='Edit'
+                                        icon={<EditIcon/>}
+                                    />
+                                    <IconButton
+                                        isRound={true}
+                                        variant='ghost'
+                                        colorScheme='red'
+                                        fontSize='20px'
+                                        aria-label='Delete'
+                                        icon={<DeleteIcon/>}
+                                    />
+                                    </Td>
+                                </Tr>
+                            )
+                        })
+                    }
+                </Tbody>
+            </Table>
+        </TableContainer>
         </>
     )
 }
