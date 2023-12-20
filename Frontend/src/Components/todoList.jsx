@@ -1,6 +1,9 @@
 
 import { useState,useEffect } from "react"
 import style from "../Styles/todoList.module.css"
+import { Table, Thead, Tbody, Tfoot, Tr,
+        Th, Td, TableCaption, TableContainer, } from '@chakra-ui/react'
+
 
 const TodoList = () => {
 
@@ -23,18 +26,29 @@ const TodoList = () => {
        }
     }
 
-    function tableColor(value){
+    function tableColor(value,bg){
 
-        if(value == 'Todo') return 'table-primary';
-        else if(value == 'Done') return 'table-success';
-        else if(value == 'Progress') return 'table-warning';
-        else return 'table-danger'
+        if(value == 'Todo') {
+            if(bg) return 'deepskyblue'
+            return 'table-primary';
+        }
+        else if(value == 'Done'){
+            if(bg) return 'seagreen'
+            return 'table-success';
+        }
+        else if(value == 'Progress') {
+            if(bg) return 'gold';
+            return 'table-warning';
+        }
+        else {
+            if(bg) return 'crimson';
+            return 'table-danger'
+        }
     }
 
-
-    // useEffect( () =>{
-    //     getList()
-    // },[])
+    useEffect( () =>{
+        getList()
+    },[])
 
     return (
         <>
@@ -60,8 +74,9 @@ const TodoList = () => {
                                 <td>{elem.todo_id}</td>
                                 <td>{elem.title}</td>
                                 <td>{elem.description}</td>
-                                <td>
-                                    <div>{elem.status}</div>
+                                <td className={style.statusColumn}>
+                                    <div className={style.statusBox} 
+                                    style={{backgroundColor:tableColor(elem.status,true)}}>{elem.status}</div>
                                 </td>
                                 <td>Edit</td>
                             </tr>
