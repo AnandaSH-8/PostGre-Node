@@ -28,23 +28,19 @@ const TodoList = () => {
        }
     }
 
-    function tableColor(value,bg){
+    function tableColor(value){
 
         if(value == 'Todo') {
-            if(bg) return 'deepskyblue'
-            return 'table-primary';
+            return 'deepskyblue'
         }
         else if(value == 'Done'){
-            if(bg) return 'seagreen'
-            return 'table-success';
+            return 'seagreen'
         }
         else if(value == 'Progress') {
-            if(bg) return 'gold';
-            return 'table-warning';
+            return 'gold';
         }
         else {
-            if(bg) return 'crimson';
-            return 'table-danger'
+            return 'crimson';
         }
     }
 
@@ -66,7 +62,7 @@ const TodoList = () => {
             </Box>
         <TableContainer>
             <Table variant='striped' colorScheme="orange">
-                <Thead>
+                <Thead background='cyan.50'>
                     <Tr>
                         <Th> Id </Th>
                         <Th> Title </Th>
@@ -75,22 +71,22 @@ const TodoList = () => {
                         <Th> Actions</Th>
                     </Tr>
                 </Thead>
-                <Tbody>
+                <Tbody className={style.chakraTbody}>
                     {  todoList?.map((elem,index) =>{
                             return (
-                                <Tr className={tableColor(elem.status)} scope="row" key={index}>
+                                <Tr color='black' key={index}>
                                     <Td>{elem.todo_id}</Td>
                                     <Td>{elem.title}</Td>
                                     <Td>{elem.description}</Td>
                                     <Td className={style.statusColumn}>
                                         <Box className={style.statusBox} 
-                                        style={{backgroundColor:tableColor(elem.status,true)}}>{elem.status}</Box>
+                                        style={{backgroundColor:tableColor(elem.status)}}>{elem.status}</Box>
                                     </Td>
                                     <Td>
                                     <IconButton
                                         isRound={true}
                                         variant='ghost'
-                                        colorScheme='orange'
+                                        colorScheme='green'
                                         fontSize='20px'
                                         aria-label='Edit'
                                         icon={<EditIcon/>}
