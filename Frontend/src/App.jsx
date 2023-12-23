@@ -1,10 +1,16 @@
 import CreateTodo from './Components/addTodo'
 import TodoList from "./Components/todoList"
 import './App.css'
-import EditTodo from './Components/editTodo'
 import DeleteTodo from './Components/deleteTodo'
+import { useState } from 'react'
 
 function App() {
+
+  const [isDelete,setIsDelete] = useState(false);
+
+  function recieveDeleteFunc(value){
+    setIsDelete(value)
+  }
 
   return (
       <div className='d-flex'>
@@ -12,10 +18,9 @@ function App() {
           <CreateTodo></CreateTodo>
         </div>
         <div>
-          <TodoList></TodoList>
+          <TodoList receiveDelete={recieveDeleteFunc}></TodoList>
         </div>
-        <EditTodo></EditTodo>
-        <DeleteTodo></DeleteTodo>
+        <DeleteTodo itemId={isDelete} setFunc={setIsDelete} ></DeleteTodo>
       </div>
   )
 }

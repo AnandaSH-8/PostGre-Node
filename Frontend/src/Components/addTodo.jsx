@@ -46,7 +46,7 @@ export default function CreateTodo(){
                     <option value="Failed">Failed</option>
                 </Select>
 
-                <Button className="mt-4"value="Submit" onClick={onClickForm}
+                <Button className="mt-3"value="Submit" onClick={onClickForm}
                 isDisabled={!formInfo.title || !formInfo.description || !formInfo.status}>
                     Submit
                 </Button>

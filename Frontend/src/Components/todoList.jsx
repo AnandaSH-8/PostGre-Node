@@ -7,10 +7,11 @@ import {DeleteIcon, EditIcon} from '@chakra-ui/icons'
 
 
 
-const TodoList = () => {
+const TodoList = ({receiveDelete}) => {
 
     const [todoList,setTodoList] = useState([]);
     const [start,setStart] = useState(false);
+    const [isEdit,setIsEdit] = useState(false)
 
     const getList = async () => {
 
@@ -89,6 +90,7 @@ const TodoList = () => {
                                         colorScheme='green'
                                         fontSize='20px'
                                         aria-label='Edit'
+                                        onClick={()=>setIsEdit(true)}
                                         icon={<EditIcon/>}
                                     />
                                     <IconButton
@@ -97,6 +99,7 @@ const TodoList = () => {
                                         colorScheme='red'
                                         fontSize='20px'
                                         aria-label='Delete'
+                                        onClick={ () => receiveDelete(elem.todo_id)}
                                         icon={<DeleteIcon/>}
                                     />
                                     </Td>
