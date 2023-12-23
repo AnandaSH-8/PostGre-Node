@@ -1,6 +1,6 @@
 import { useState } from "react"
 import style from "../Styles/addTodo.module.css"
-import { FormControl,FormLabel,Input, Select, Textarea } from "@chakra-ui/react";
+import { Button, FormControl,FormLabel,Input, Select, Textarea } from "@chakra-ui/react";
 
 export default function CreateTodo(){
 
@@ -10,7 +10,7 @@ export default function CreateTodo(){
         status:''
     });
 
-    const onSubmitForm = async(e) => {
+    const onClickForm = async(e) => {
         e.preventDefault();
         try {
             const payload = formInfo;
@@ -23,13 +23,12 @@ export default function CreateTodo(){
         } catch (error) {
             console.error(error)
         }
-
     }
 
     return (
         <>
             <h2 className="text-decoration-underline">Add New Todo</h2>
-            <FormControl className={style.formStyle} onSubmit={onSubmitForm} isRequired>
+            <FormControl className={style.formStyle} isRequired>
                 <FormLabel> Title </FormLabel>
                 <Input value={formInfo.title} placeholder='Title' 
                 onChange={ ({target}) => setFormInfo({...formInfo,title:target.value})}/>
@@ -39,7 +38,7 @@ export default function CreateTodo(){
                 onChange={({target}) => setFormInfo({...formInfo,description:target.value})}/>
 
                 <FormLabel>Status</FormLabel>
-                <Select placeholder='Select Status' value={formInfo.status}
+                <Select bg="white" className="text-dark" placeholder='Select Status' value={formInfo.status}
                 onChange={ ({target}) => setFormInfo({...formInfo,status:target.value})}>
                     <option value="Todo">Todo</option>
                     <option value="Progress">Progress</option>
@@ -47,7 +46,10 @@ export default function CreateTodo(){
                     <option value="Failed">Failed</option>
                 </Select>
 
-                <Input type="submit" />
+                <Button className="mt-4"value="Submit" onClick={onClickForm}
+                isDisabled={!formInfo.title || !formInfo.description || !formInfo.status}>
+                    Submit
+                </Button>
             </FormControl>
         </>
     )
