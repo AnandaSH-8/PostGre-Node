@@ -6,10 +6,16 @@ import { useState } from 'react'
 
 function App() {
 
-  const [isDelete,setIsDelete] = useState(false);
+  const [isDelete,setIsDelete] = useState(0);
+  const [getList, setGetList] = useState(false)
 
   function recieveDeleteFunc(value){
     setIsDelete(value)
+  }
+
+  if(isDelete == -8){
+    setIsDelete(0);
+    setGetList(true)
   }
 
   return (
@@ -18,7 +24,7 @@ function App() {
           <CreateTodo></CreateTodo>
         </div>
         <div>
-          <TodoList receiveDelete={recieveDeleteFunc}></TodoList>
+          <TodoList receiveDelete={recieveDeleteFunc}  getTodoList={getList} setFunc={setGetList}></TodoList>
         </div>
         <DeleteTodo itemId={isDelete} setFunc={setIsDelete} ></DeleteTodo>
       </div>

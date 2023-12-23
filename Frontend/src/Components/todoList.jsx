@@ -4,10 +4,10 @@ import style from "../Styles/todoList.module.css"
 import { Table, Thead, Tbody, Tr, IconButton,
         Th, Td, TableContainer, Box } from '@chakra-ui/react'
 import {DeleteIcon, EditIcon} from '@chakra-ui/icons'
+import PropTypes from "prop-types"
 
 
-
-const TodoList = ({receiveDelete}) => {
+const TodoList = ({receiveDelete,getTodoList,setFunc}) => {
 
     const [todoList,setTodoList] = useState([]);
     const [start,setStart] = useState(false);
@@ -44,6 +44,13 @@ const TodoList = ({receiveDelete}) => {
             return 'crimson';
         }
     }
+
+   useEffect(()=>{
+        if(getTodoList){
+            getList()
+            setFunc(false);
+        }
+   },[getTodoList])
 
     useEffect( () =>{
         getList()
@@ -112,6 +119,11 @@ const TodoList = ({receiveDelete}) => {
         </TableContainer>
         </>
     )
+}
+
+TodoList.propTypes = {
+    receiveDelete : PropTypes.func,
+    getTodoList: PropTypes.bool
 }
 
 export default TodoList;

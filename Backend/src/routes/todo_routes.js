@@ -29,7 +29,7 @@ router.put('/updateTodo/:id', async(req,res)=>{
 //Delete method one
 router.delete('/deleteTodo/:id', async(req,res)=>{
     await todoMethods.deleteTodo(req);
-    res.json("Successfully Deleted")
+    res.json({code:'deleted',message:"Successfully Deleted"})
 })
 
 module.exports = router;

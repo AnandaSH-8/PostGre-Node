@@ -1,16 +1,16 @@
 import { useEffect } from "react"
-
+import PropTypes from 'prop-types';
 export default function DeleteTodo({itemId,setFunc}){
 
     const DeleteItem = async () => {
-
         try {
             const result = await fetch('http://localhost:3000/deleteTodo/'+itemId,{
                     "method":"DELETE"
                 })
         const data = await result.json();
-        console.log(data,'IS AT LINE NUMBER 12');
-            
+            if(data.code == "deleted"){
+                setFunc(-8)
+            }
         } catch (error) {
             console.error(error)
         }
@@ -21,10 +21,14 @@ export default function DeleteTodo({itemId,setFunc}){
         if(itemId){
             DeleteItem()
         }
-        setFunc(false)
-    },[itemId])
+    })
     
     return(
         <></>
     )
+}
+
+DeleteTodo.propTypes = {
+    itemId:PropTypes.number,
+    setFunc:PropTypes.func
 }
