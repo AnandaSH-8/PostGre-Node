@@ -55,3 +55,15 @@
 .chakraTbody tr td{
   padding:5px 10px;
 }
+
+.chakraAlert{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  top:200px;
+  left:50%;
+  width:300px !important;
+  height: 100px;
+}

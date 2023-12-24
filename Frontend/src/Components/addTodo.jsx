@@ -31,11 +31,11 @@ export default function CreateTodo(){
             <FormControl className={style.formStyle} isRequired>
                 <FormLabel> Title </FormLabel>
                 <Input value={formInfo.title} placeholder='Title' 
-                onChange={ ({target}) => setFormInfo({...formInfo,title:target.value})}/>
+                onInput={ ({target}) => setFormInfo({...formInfo,title:target.value})}/>
 
                 <FormLabel>Description</FormLabel>
                 <Textarea placeholder='Description' value={formInfo.description}
-                onChange={({target}) => setFormInfo({...formInfo,description:target.value})}/>
+                onInput={({target}) => setFormInfo({...formInfo,description:target.value})}/>
 
                 <FormLabel>Status</FormLabel>
                 <Select bg="white" className="text-dark" placeholder='Select Status' value={formInfo.status}
