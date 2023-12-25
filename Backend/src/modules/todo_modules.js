@@ -37,7 +37,7 @@ const todoMethods = {
         try {
             const {id} = data.params;
             const {title, description, status} = data.body;
-            await pool.query(`UPDATE todo SET (title,description,status) VALUES($1,$2,$3)  WHERE todo_id = ${id}`,
+            await pool.query(`UPDATE todo SET title = $1,description = $2, status = $3  WHERE todo_id = ${id}`,
                 [title, description, status])
             return true;
         } catch (error) {

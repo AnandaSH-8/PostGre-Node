@@ -104,7 +104,7 @@ const TodoList = ({receiveDelete,getTodoList,setFunc}) => {
                     position='absolute'
                     right={-1}
                     top={-1}
-                    onClick={() => setAlert({...alert,show:false})}
+                    onClick={() => {getList(); setAlert({...alert,show:false})}}
                 />
             </Alert> : '' }
             <Box bg='tomato' color='white' display='flex' p='1'>
