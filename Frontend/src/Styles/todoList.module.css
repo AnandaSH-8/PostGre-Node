@@ -68,3 +68,17 @@
   height: 100px;
   z-index: 100;
 }
+
+.chakraTable thead tr th{
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.chakraTable tbody tr td{
+    text-align: center;
+  }
+
+  .chakraTable tbody tr td div{
+    margin: auto;
+  }

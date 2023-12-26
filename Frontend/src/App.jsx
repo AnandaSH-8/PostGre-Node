@@ -3,6 +3,7 @@ import TodoList from "./Components/todoList"
 import './App.css'
 import DeleteTodo from './Components/deleteTodo'
 import { useState } from 'react'
+import { Card } from '@chakra-ui/react'
 
 function App() {
 
@@ -19,7 +20,13 @@ function App() {
   }
 
   return (
-      <div className='d-flex'>
+    <>
+      <Card bgGradient='linear(to-t, lightgreen, white, orange)' 
+        display='flex' justifyContent='center'
+         height='55'>
+        <h2 className='text-primary' >Todo List Site</h2>
+      </Card>
+      <div className='d-flex p-4'>
         <div className='addTodoBox'>
           <CreateTodo></CreateTodo>
         </div>
@@ -28,6 +35,7 @@ function App() {
         </div>
         <DeleteTodo itemId={isDelete} setFunc={setIsDelete} ></DeleteTodo>
       </div>
+    </>
   )
 }
 

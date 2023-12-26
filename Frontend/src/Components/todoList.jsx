@@ -118,9 +118,9 @@ const TodoList = ({receiveDelete,getTodoList,setFunc}) => {
                 </Box>
             </Box>
         <TableContainer>
-            <Table variant='striped' colorScheme="orange">
+            <Table variant='striped' colorScheme="orange" className={style.chakraTable}>
                 <Thead background='cyan.50'>
-                    <Tr>
+                    <Tr >
                         <Th> Id </Th>
                         <Th> Title </Th>
                         <Th> Description </Th>
