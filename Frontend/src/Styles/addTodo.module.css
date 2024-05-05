@@ -2,10 +2,11 @@
 .formStyle{
     display: block;
     width:90%;
-    margin: 4vh auto 2vh;
-    padding:5vh;
-    padding-top: 2vh;
+    margin: 4vh auto 4vh;
+    padding: 1.5vh 5vh;
     height:350px;
+    overflow: auto;
+    scrollbar-width:thin;
     border-radius: 2%;
     background-color: rgba(154, 22, 150, 0.936);
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;;

@@ -29,7 +29,8 @@ const TodoList = ({receiveDelete,getTodoList,setFunc}) => {
         const time = setTimeout(async ()=>{
             const result = await fetch('http://localhost:3000/getTodos');
             const {data} = await result.json()
-            setTodoList(data);
+            const sortedData = data.sort((a,b)=>a.todo_id - b.todo_id);
+            setTodoList(sortedData);
             clearTimeout(time)
             setStart(false)
         },500)
@@ -134,20 +135,20 @@ const TodoList = ({receiveDelete,getTodoList,setFunc}) => {
                                 <Tr color='black' key={index}>
                                     <Td>{elem.todo_id}</Td>
                                     <Td>
-                                        {isEdit ? 
+                                        {isEdit && editedData.todo_id == elem.todo_id ? 
                                         <Input onInput={({target}) => setEditedData({...editedData,title:target.value})} 
                                         value={editedData.title} bg="white"/>
                                         : elem.title}
                                     </Td>
                                     <Td>
-                                        {isEdit ? 
+                                        {isEdit && editedData.todo_id == elem.todo_id  ? 
                                         <Input onInput={({target}) => setEditedData({...editedData,description:target.value})} 
                                         value={editedData.description} bg="white"/>
                                         : elem.description
                                         }
                                     </Td>
                                     <Td className={style.statusColumn}>
-                                    {   isEdit ? 
+                                    {   isEdit && editedData.todo_id == elem.todo_id  ? 
                                         <Select value={editedData.status} bg="white"
                                             onChange={ ({target}) => setEditedData({...editedData,status:target.value})}>
                                             <option value="Todo">Todo</option>
