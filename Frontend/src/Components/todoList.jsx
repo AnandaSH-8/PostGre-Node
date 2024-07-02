@@ -29,8 +29,10 @@ const TodoList = ({receiveDelete,getTodoList,setFunc}) => {
         const time = setTimeout(async ()=>{
             const result = await fetch('http://localhost:3000/getTodos');
             const {data} = await result.json()
-            const sortedData = data.sort((a,b)=>a.todo_id - b.todo_id);
-            setTodoList(sortedData);
+            if(data){
+                const sortedData = data.sort((a,b)=>a.todo_id - b.todo_id);
+                setTodoList(sortedData);
+            }
             clearTimeout(time)
             setStart(false)
         },500)

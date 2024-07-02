@@ -20,7 +20,7 @@ const todoMethods = {
             const result = await pool.query('SELECT * FROM todo');
             return {data:result.rows};
         } catch (error) {
-            console.log(error,'IS AT LINE NUMBER 23');
+            if(!error.table) return [];
         }
     },
     getTodo : async (data) => {
