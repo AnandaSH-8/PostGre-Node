@@ -7,14 +7,15 @@ export default function DeleteTodo({itemId,setFunc}){
     const [showConfirm, setShowConfirm] = useState(false);
 
 
-    const DeleteItem = async () => {
+const DeleteItem = async () => {
         try {
             const result = await fetch('http://localhost:3000/deleteTodo/'+itemId,{
                     "method":"DELETE"
                 })
         const data = await result.json();
             if(data.code == "deleted"){
-                setFunc(-8)
+                setShowConfirm(false);
+                setFunc(-8);
             }
         } catch (error) {
             console.error(error)
@@ -23,8 +24,7 @@ export default function DeleteTodo({itemId,setFunc}){
     }
 
     const PreDeleteItem = () => {
-        alert(`IS AT LINE NUMBER 26`)
-        setShowConfirm(true)
+        setShowConfirm(true);
     }
 
     useEffect(()=>{
@@ -35,7 +35,7 @@ export default function DeleteTodo({itemId,setFunc}){
     
     return(
         <>
-           {showConfirm ?  <AlertDialog>
+           <AlertDialog isOpen={showConfirm}>
                 <AlertDialogOverlay>
                 <AlertDialogContent>
                     <AlertDialogHeader fontSize='lg' fontWeight='bold'>
@@ -56,7 +56,7 @@ export default function DeleteTodo({itemId,setFunc}){
                     </AlertDialogFooter>
                 </AlertDialogContent>
                 </AlertDialogOverlay>
-            </AlertDialog> : <></>}
+            </AlertDialog>
         </>
     )
 }
